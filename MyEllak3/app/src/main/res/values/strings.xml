@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyEllak3</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_threads">Threads</string>
+    <string name="title_activity_timers">Timers</string>
+</resources>
