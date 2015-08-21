@@ -78,9 +78,9 @@ public class Timers extends Activity implements OnClickListener
 
     public void ShowMessage (int Val)
     {
-        Message msg = new Message ();
         Bundle bun = new Bundle ();
         bun.putInt ("Value", Val);
+        Message msg = new Message ();
         msg.setData (bun);
         MyHandler.sendMessage (msg);
     }

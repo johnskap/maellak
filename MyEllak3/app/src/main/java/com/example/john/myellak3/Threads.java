@@ -60,9 +60,9 @@ public class Threads extends ActionBarActivity implements OnClickListener
 
     public void ShowMessage (String Mess)
     {
-        Message msg = new Message ();
         Bundle bun = new Bundle ();
         bun.putString ("Message", Mess);
+        Message msg = new Message ();
         msg.setData (bun);
         MyHandler.sendMessage (msg);
     }
@@ -79,39 +79,4 @@ public class Threads extends ActionBarActivity implements OnClickListener
     };
 }
 
-class MyThread extends Thread
-{
-    Threads Father;
-    String Site;
 
-    MyThread (Threads f, String s)
-    {
-        Father = f;
-        Site = s;
-    }
-
-    @Override
-    public void run ()
-    {
-        int count = 0;
-        Father.ShowMessage ("Getting: " + Site);
-        HttpClient httpclient = new DefaultHttpClient ();
-        HttpGet httpget = new HttpGet (Site);
-        HttpResponse response;
-        try
-        {
-            response = httpclient.execute (httpget);
-            InputStream Inp = response.getEntity ().getContent ();
-            BufferedReader Reader = new BufferedReader (new InputStreamReader (Inp));
-            while (Reader.read () != -1)
-                count++;
-            Reader.close ();
-            Father.ShowMessage (Site + " size: " + count);
-        }
-        catch (Exception e) //ClientProtocolException | IOException
-        {
-            System.err.println (e.getMessage ());
-        }
-
-    }
-}
